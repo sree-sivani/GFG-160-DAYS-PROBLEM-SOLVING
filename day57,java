@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+
+class Solution {
+    // Function to count distinct elements in every window of size k.
+    ArrayList<Integer> countDistinct(int arr[], int k) {
+        int i = 0, j = k - 1; // Define window boundaries
+        ArrayList<Integer> res = new ArrayList<>();
+
+        // Iterate through the array using a sliding window approach
+        while (j < arr.length) {
+            HashSet<Integer> hs = new HashSet<>(); // Store unique elements in the current window
+
+            // Traverse the current window and add elements to the HashSet
+            for (int x = i; x < i + k; x++) {
+                hs.add(arr[x]);
+            }
+
+            // Move the window forward
+            i++;
+            j++;
+
+            // Store the count of distinct elements in the result list
+            res.add(hs.size());
+        }
+        return res;
+    }
+}
